@@ -1,31 +1,12 @@
 // Atomy
 
-atomsList = new Array();
 
-atomsList.push([ '0', 'O', 2, 85, 325 ]);
-atomsList.push([ '1', 'C', 3, 85, 325 ]);
-atomsList.push([ '2', 'O', 2, 85, 325 ]);
-atomsList.push([ '3', 'O', 2, 85, 325 ]);
-atomsList.push([ '4', 'O', 2, 85, 325 ]);
-
-connectionList = new Array();
-//connectionList.push([ 0, 1 ]);
-//connectionList.push([ 1, 2 ]);
-//connectionList.push([ 2, 0 ]);
-//
-//connectionList.push([ 3, 1 ]);
-//connectionList.push([ 1, 4 ]);
-//connectionList.push([ 4, 3 ]);
-
-connectionList.push([ 1, 0 ]);
-connectionList.push([ 2, 1 ]);
-connectionList.push([ 0, 2 ]);
-
-connectionList.push([ 1, 3 ]);
-connectionList.push([ 4, 1 ]);
-connectionList.push([ 3, 4 ]);
 
 //  o=c=nc
+
+
+function al_smiles(atomsList,connectionList){
+
 var atomsGraph = new Array();
 var signs = [ '', '=', '#' ];
 
@@ -122,8 +103,9 @@ function current_to_next(current, parent) {
 console.log(atomsGraph);
 
 var ot = current_to_next(current, current);
-console.log(smiles);
-
+return smiles;
+}
+console.log(al_smiles(atomsList,connectionList));
 //O(=C=NC)(=O)
 
 //console.log(atomsGraph);
