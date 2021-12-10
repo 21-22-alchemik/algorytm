@@ -1,0 +1,40 @@
+---
+name: Test
+on:
+  push:
+    branches-ignore: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  lint:
+    name: Lint Code Base
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Lint Code Base
+        uses: github/super-linter/slim@v4
+        env:
+          VALIDATE_ALL_CODEBASE: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  test:
+    name: Jest automatic test
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run Jest
+        uses: stefanoeb/jest-action@1.0.3
+        with:
+          jestArgs: .github/tests/my.test.js
+env:
+  LINTER_RULES_PATH: /
+  JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.yml
+  CSS_FILE_NAMEL: .stylelintrc.json
+  VALIDATE_JAVASCRIPT_STANDARD: false
+  VALIDATE_HTML: false
+  VALIDATE_JSON: false

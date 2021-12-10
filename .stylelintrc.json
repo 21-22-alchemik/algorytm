@@ -1,0 +1,7 @@
+{
+    "extends": "stylelint-config-standard",
+    "rules": {
+        "selector-class-pattern": "^[a-z][a-zA-Z0-9]+$",
+        "font-family-no-missing-generic-family-keyword": null
+    }
+}
